@@ -1,31 +1,24 @@
-import React, { useContext } from "react";
-import { Redirect } from "react-router-dom";
+import React from "react";
 import firebaseConfig from "../../firebase/config";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
-import { Link, useParams, useHistory } from 'react-router-dom';
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-// import { AuthContext } from "../Auth";
 function SignUp() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const { email, password } = e.target.elements;
     console.log("email=>", email, password)
-    // try {
-    //   firebaseConfig.auth().signInWithEmailAndPassword(email.value, password.value);
-    // } catch (error) {
-    //   alert(error);
-    // }
+    try {
+      firebaseConfig.auth().signInWithEmailAndPassword(email.value, password.value);
+    } catch (error) {
+      alert(error);
+    }
   };
-  // const { currentUser } = useContext(AuthContext);
-  // if (currentUser) {
-  //   return <Redirect to="/dashboard" />;
-  // }
 
   return (
     <Container component="main" maxWidth="sm">
@@ -105,9 +98,9 @@ function SignUp() {
           </Button>
           <Grid container justifyContent="flex-end">
             <Grid item>
-              <Link to="/" variant="body2">
+              {/* <Link to="/" variant="body2">
                 Already have an account? Sign in
-              </Link>
+              </Link> */}
             </Grid>
           </Grid>
         </Box>
